@@ -2,9 +2,9 @@ import { IMAGES } from '../constants';
 
 const loadImages = () => ({ type: IMAGES.LOAD.START });
 
-const setImages = () => ({ type: IMAGES.LOAD.SUCCESS });
+const setImages = images => ({ type: IMAGES.LOAD.SUCCESS, images });
 
-const setImagesError = () => ({ type: IMAGES.LOAD.FAIL });
+const setImagesError = error => ({ type: IMAGES.LOAD.FAIL, error });
 
 export {
   loadImages,

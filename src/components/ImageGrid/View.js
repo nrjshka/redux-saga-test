@@ -1,43 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ImageGridView = ({ images, onClick, isLoading }) => {
+const ImageGridView = ({ images, loadImages, isLoading }) => {
   const [stateImages, changeImageState] = useState(images);
 
+  useEffect(loadImages, []);
   useEffect(() => changeImageState(images), [images]);
 
-  const onClickHandler = e => {
+  const onClick = e => {
     e.stopPropagation();
 
-    onClick();
+    loadImages();
   };
 
   return (
-    <div>
-      {isLoading && <div>Loading...</div>}
-      <button onClick={onClickHandler}>
-        Click me!
-      </button>
-      {stateImages.map((imgData, imgId) => (
-        <img
-          alt="Img"
-          id={imgId}
-          src={imgData}
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {isLoading && <div>Loading...</div>}
+        <button onClick={onClick} disabled={isLoading}>
+          Click me!
+        </button>
+      </div>
+      <div>
+        {stateImages.map(imgData => (
+          <img
+            alt="Img"
+            id={imgData.id}
+            src={imgData.urls.full}
+            width="150"
+            height="150"
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
 ImageGridView.defaultProps = {
   images: [],
-  onClick: Function.prototype,
+  loadImages: Function.prototype,
   isLoading: false,
 };
 
 ImageGridView.propTypes = {
   images: PropTypes.array,
-  onClick: PropTypes.func,
+  loadImages: PropTypes.func,
   isLoading: PropTypes.bool,
 };
 

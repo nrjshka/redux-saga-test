@@ -7,7 +7,7 @@ import { loadImages } from '../../actions';
 
 export default connectAdvanced(dispatch => {
   const actionCreators = bindActionCreators({
-    onClick: loadImages,
+    loadImages,
   }, dispatch);
 
   let result = {};

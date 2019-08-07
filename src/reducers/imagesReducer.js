@@ -3,10 +3,10 @@ import { IMAGES } from '../constants';
 const imagesReducer = (state = [], action) => {
   switch(action.type) {
     case IMAGES.LOAD.SUCCESS:
-      return {
+      return [
         ...state,
         ...action.images,
-      };
+      ];
     default:
       return state;
   }
