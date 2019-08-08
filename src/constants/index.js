@@ -6,9 +6,17 @@ const IMAGES = {
   }
 };
 
+const STATS = {
+  LOAD: {
+    START: 'STATS/LOAD/START',
+    SUCCESS: 'STATS/LOAD/SUCCESS',
+    FAIL: 'STATS/LOAD/FAIL',
+  }
+};
+
 const API = {
   KEY: '?client_id=5f96323678d05ff0c4eb264ef184556868e303b32a2db88ecbf15746e6f25e02',
   URL: 'https://api.unsplash.com/photos/',
 };
 
-export { IMAGES, API };
+export { IMAGES, STATS, API };

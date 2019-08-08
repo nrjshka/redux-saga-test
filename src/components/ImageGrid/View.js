@@ -23,13 +23,16 @@ const ImageGridView = ({ images, loadImages, isLoading }) => {
       </div>
       <div>
         {stateImages.map(imgData => (
-          <img
-            alt="Img"
-            id={imgData.id}
-            src={imgData.urls.full}
-            width="150"
-            height="150"
-          />
+          <div>
+            <img
+              alt="Img"
+              id={imgData.id}
+              src={imgData.urls.full}
+              width="50%"
+              height="150"
+            />
+            {imgData.statsId}
+          </div>
         ))}
       </div>
     </>

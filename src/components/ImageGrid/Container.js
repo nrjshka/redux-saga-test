@@ -13,7 +13,18 @@ export default connectAdvanced(dispatch => {
   let result = {};
 
   return (nextState, ownProps) => {
-    const nextProps = { ...ownProps, ...nextState, ...actionCreators };
+    let { imageStats, images } = nextState;
+
+    images = images.map(image => {
+      if (imageStats[image.id]) {
+        image.statsId = imageStats[image.id].downloads;
+      } else {
+        image.statsId = null;
+      }
+      return image;
+    });
+
+    const nextProps = { ...ownProps, ...nextState, ...actionCreators, images };
 
     if (!equals(result, nextProps)) result = nextProps;
 
