@@ -16,12 +16,6 @@ const ImageGridView = ({ images, loadImages, isLoading }) => {
   return (
     <>
       <div>
-        {isLoading && <div>Loading...</div>}
-        <button onClick={onClick} disabled={isLoading}>
-          Click me!
-        </button>
-      </div>
-      <div>
         {stateImages.map(imgData => (
           <div>
             <img
@@ -34,6 +28,12 @@ const ImageGridView = ({ images, loadImages, isLoading }) => {
             {imgData.statsId}
           </div>
         ))}
+      </div>
+      <div>
+        {isLoading && <div>Loading...</div>}
+        <button onClick={onClick} disabled={isLoading}>
+          Click me!
+        </button>
       </div>
     </>
   );
